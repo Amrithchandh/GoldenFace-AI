@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenFace AI</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ffd700; /* Gold */
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        .video-container {
+            border: 2px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            background-color: #000;
+            width: 100%;
+            max-width: 800px; /* Limit video width */
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        .info-panel {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .info-text {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GOLDEN FACE AI</h1>
+    </header>
+
+    <div class="container">
+        <div class="video-container">
+            <!-- This image tag streams the video from Flask -->
+            <img src="{{ url_for('video_feed') }}" alt="Live Camera Feed">
+        </div>
+
+        <div class="info-panel">
+            <h2>Live Analysis Session</h2>
+            <p>Please keep your face centered in the camera frame.</p>
+            <p class="info-text">The AI is analyzing your facial proportions against the Golden Ratio.</p>
+            <p class="info-text">Results are automatically saved to the database.</p>
+        </div>
+    </div>
+
+</body>
+</html>
