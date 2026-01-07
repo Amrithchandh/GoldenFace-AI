@@ -9,7 +9,7 @@ import os
 
 # Add parent directory to path to import Library Source if needed, 
 # though 'pip install -e .' should handle it.
-import GoldenFace.Library_Source as GoldenFace
+import Library_Source as GoldenFace  
 import database_helper
 
 class GoldenFaceApp:
