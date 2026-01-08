@@ -1,23 +1,21 @@
-
 import cv2
-
 import time
 import random
 import threading
 import sys
 import os
+import tkinter as tk
+from tkinter import ttk
+from PIL import Image, ImageTk
 
+# Clean import for GoldenFace
 try:
     import GoldenFace
 except ImportError:
-    # If not installed, try common folder names
-    import sys
-    import os
-    if os.path.isdir("GoldenFace"):
-        sys.path.append(os.path.abspath("GoldenFace"))
-    elif os.path.isdir("Library Source"):
-        sys.path.append(os.path.abspath("Library Source"))
+    # Local fallback
+    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     import GoldenFace
+
 import database_helper
 
 class GoldenFaceApp:

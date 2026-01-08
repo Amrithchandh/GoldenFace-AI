@@ -3,8 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='goldenface',
     version='0.1',
-    packages=['GoldenFace'],  # Define the package name
-    package_dir={'GoldenFace': 'Library Source'},  # Map package to source folder
+    packages=find_packages(), # Automatically find the GoldenFace package 
     package_data={'GoldenFace': ['*.yaml', '*.json', '*.png']}, # Include model and data files
     include_package_data=True,
     install_requires=[
@@ -12,6 +11,7 @@ setup(
         'opencv-contrib-python',
         'streamlit',
         'numpy',
-        'Pillow'
+        'Pillow',
+        'setuptools'
     ],
 )

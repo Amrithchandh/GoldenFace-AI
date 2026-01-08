@@ -5,20 +5,18 @@ from PIL import Image
 import sys
 import os
 
-# Robust import for GoldenFace
-import sys
-import os
-
-# Cloud deployment fallback: Add 'Library Source' to path if GoldenFace not installed
-if os.path.isdir("Library Source"):
-    sys.path.append(os.path.abspath("Library Source"))
-
+# Clean import for GoldenFace (folder must be named GoldenFace)
 try:
     import GoldenFace
 except ImportError:
-    st.error("### ❌ GoldenFace library not found!")
-    st.info("Ensure the 'Library Source' folder is in your repository root.")
-    st.stop()
+    # Local fallback in case of path issues
+    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    try:
+        import GoldenFace
+    except ImportError:
+        st.error("### ❌ GoldenFace library not found!")
+        st.info("The folder 'GoldenFace' must be in your repository root.")
+        st.stop()
 
 st.set_page_config(page_title="GoldenFace AI", layout="centered")
 
@@ -36,8 +34,8 @@ else:
     uploaded_file = st.camera_input("Smile for the AI!")
 
 if uploaded_file is not None:
-    # Read file as bytes
     try:
+        # Correctly read image data from bytes
         file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
         bgr_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
         
@@ -57,7 +55,7 @@ if uploaded_file is not None:
                     
                     # Compute score
                     raw_score = analysis.geometricRatio()
-                    # User requirement logic (same as camera_example.py)
+                    # Normalized Beauty Score (50-99%)
                     geometric_score = 50 + raw_score / 2 if raw_score < 50 else raw_score
                     geometric_score = max(50, min(99, geometric_score))
 
@@ -72,10 +70,9 @@ if uploaded_file is not None:
                     with col2:
                         st.subheader("Results")
                         st.metric(label="Beauty Score", value=f"{int(geometric_score)}%")
-                        st.write("The score is based on geometric ratios between key facial landmarks.")
+                        st.write("The score is based on facial geometric ratios.")
     
     except Exception as e:
         st.error(f"An error occurred during analysis: {e}")
-        st.info("Ensure the image is a clear portrait facing the camera.")
 else:
     st.info("Waiting for image input...")
