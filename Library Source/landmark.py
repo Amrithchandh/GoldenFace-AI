@@ -6,8 +6,8 @@
 # Mail        : umit@aksoylu.space
 # Github      : https://github.com/Aksoylu/GoldenFace
 import cv2
-import GoldenFace.goldenMath
-import GoldenFace.functions
+from . import goldenMath
+from . import functions
 
 
 

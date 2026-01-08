@@ -7,9 +7,9 @@
 # Github      : https://github.com/Aksoylu/GoldenFace
 
 import cv2
-import GoldenFace.goldenMath
-import GoldenFace.functions
-import GoldenFace.landmark
+from . import goldenMath
+from . import functions
+from . import landmark
 import time
 import pkg_resources
 import numpy as np

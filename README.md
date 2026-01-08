@@ -157,3 +157,48 @@ umitFace.drawLandmarks(color)
 ```python
 umitFace.writeImage("umit_analyzed.jpeg")
 ```
+## 🚀 How to Run Locally
+
+### 1. Install Dependencies
+It is recommended to use a virtual environment.
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run the Streamlit UI
+This is the easiest way to use the project with a modern interface:
+```bash
+streamlit run streamlit_app.py
+```
+
+### 3. Run the Camera Demo
+To test live analysis via your webcam:
+```bash
+python camera_example.py
+```
+
+### 4. Run the GUI App (Tkinter)
+```bash
+python gui_app.py
+```
+
+---
+
+## 🌐 Free Deployment (Hosting)
+
+You can host this project for free using the following platforms:
+
+### 1. Streamlit Community Cloud (Recommended)
+1. Push this code to a **GitHub** repository.
+2. Sign in to [Streamlit Cloud](https://share.streamlit.io/).
+3. Click "New App", select your repo, and set the main file to `streamlit_app.py`.
+4. Click **Deploy**.
+
+### 2. Hugging Face Spaces
+1. Create a new Space on [Hugging Face](https://huggingface.co/spaces).
+2. Select **Streamlit** as the SDK.
+3. Upload these files or connect your GitHub.
+4. It will automatically build and run.
+
+---
+*Created by Ümit Aksoylu 2021 © M.I.T License*

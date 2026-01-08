@@ -7,5 +7,11 @@ setup(
     package_dir={'GoldenFace': 'Library Source'},  # Map package to source folder
     package_data={'GoldenFace': ['*.yaml', '*.json', '*.png']}, # Include model and data files
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        'opencv-python',
+        'opencv-contrib-python',
+        'streamlit',
+        'numpy',
+        'Pillow'
+    ],
 )

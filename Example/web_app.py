@@ -50,7 +50,7 @@ def generate_frames():
         try:
             # 1. Analysis
             analysis = GoldenFace.goldenFace(frame)
-            analysis.drawFaceCovar((0, 255, 255))
+            analysis.drawFaceCover((0, 255, 255))
             analysis.drawLandmarks((0, 0, 255))
             
             raw_score = analysis.geometricRatio()

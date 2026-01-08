@@ -6,7 +6,7 @@
 # Mail        : umit@aksoylu.space
 # Github      : https://github.com/Aksoylu/GoldenFace
 import cv2
-import GoldenFace.functions as functions
+from . import functions as functions
 
 
 red = (255, 255, 0)

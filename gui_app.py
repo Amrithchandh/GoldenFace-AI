@@ -7,9 +7,17 @@ import threading
 import sys
 import os
 
-# Add parent directory to path to import Library Source if needed, 
-# though 'pip install -e .' should handle it.
-import Library_Source as GoldenFace  
+try:
+    import GoldenFace
+except ImportError:
+    # If not installed, try common folder names
+    import sys
+    import os
+    if os.path.isdir("GoldenFace"):
+        sys.path.append(os.path.abspath("GoldenFace"))
+    elif os.path.isdir("Library Source"):
+        sys.path.append(os.path.abspath("Library Source"))
+    import GoldenFace
 import database_helper
 
 class GoldenFaceApp:
@@ -139,7 +147,7 @@ class GoldenFaceApp:
                 analysis = GoldenFace.goldenFace(frame) 
                 
                 # Draw landmarks
-                analysis.drawFaceCovar((0, 255, 255)) # Yellow mask
+                analysis.drawFaceCover((0, 255, 255)) # Yellow mask
                 analysis.drawLandmarks((0, 0, 255))   # Red dots
                 
                 # Calculate Score
