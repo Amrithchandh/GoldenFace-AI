@@ -6,11 +6,18 @@ import sys
 import os
 
 # Robust import for GoldenFace
+import sys
+import os
+
+# Cloud deployment fallback: Add 'Library Source' to path if GoldenFace not installed
+if os.path.isdir("Library Source"):
+    sys.path.append(os.path.abspath("Library Source"))
+
 try:
     import GoldenFace
 except ImportError:
     st.error("### ❌ GoldenFace library not found!")
-    st.info("Please run `pip install -e .` in your terminal to initialize the library.")
+    st.info("Ensure the 'Library Source' folder is in your repository root.")
     st.stop()
 
 st.set_page_config(page_title="GoldenFace AI", layout="centered")
